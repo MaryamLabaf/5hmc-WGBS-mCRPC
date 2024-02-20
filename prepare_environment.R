@@ -56,6 +56,11 @@ make_path = function(BASE_DIR, s){
   paste(BASE_DIR, s, sep='/' )
 }
 
+# load all Sushi-master functions 
+source_code_dir <- make_path(BASE_DIR,"/scripts/Sushi-master/R/") 
+file_path_vec <- list.files(source_code_dir, full.names = T)
+for(f_path in file_path_vec){source(f_path)}
+
 #######################################################################################################
 # Load all custom function calls
 #######################################################################################################
