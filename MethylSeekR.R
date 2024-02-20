@@ -19,8 +19,8 @@ set.seed(123)
 round(memory.limit()/2^20, 2)
 
 #import the bismart output 
-setwd('~/Desktop/DNA_methylation/Bismark_output/Bismark_CpG_report_mrgd_output/')
-bismart_CpG_report_dir <- "~/Desktop/DNA_methylation/Bismark_output/Bismark_CpG_report_mrgd_output/"
+setwd('./DNA_methylation/Bismark_output/Bismark_CpG_report_mrgd_output/')
+bismart_CpG_report_dir <- "./DNA_methylation/Bismark_output/Bismark_CpG_report_mrgd_output/"
 filenames <- list.files(bismart_CpG_report_dir, pattern='merged_CpG_evidence.cov', 
                        full.names=F)
 bismark_CpG_list <- lapply(filenames, 
@@ -68,7 +68,7 @@ plot_alpha_dits <- function(gr_list, pdf_file, chroms){
   }
 }
 
-pdf_file <- "~/Desktop/DNA_methylation/Bismark_output/MethySeekR/"
+pdf_file <- "./DNA_methylation/Bismark_output/MethySeekR/"
 #chrs <- c("chr11","chr14","chr19","chr22")
 plot_alpha_dits(ls_gr, pdf_file, chrs)
 
