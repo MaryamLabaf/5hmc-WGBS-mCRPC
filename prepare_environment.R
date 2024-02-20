@@ -83,6 +83,7 @@ dir_bidmc_UMRLMR <- make_path(BASE_DIR, "wgbs_data/UMRLMR_methylseq_bidmc/")
 dir_tpm <- make_path(BASE_DIR, "RNAseq/")
 dir_rhmrlevels <- make_path(BASE_DIR, "wgbs_data/rhmr.tsv") #rHMR (recurent HMRs)
 
+dir_output <- make_path(BASE_DIR,"plot_tracks/")
 #######################################################################################################
 # Load data
 #######################################################################################################
