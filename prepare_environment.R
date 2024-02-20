@@ -51,7 +51,6 @@ libraries_to_load <- c("stringr",
 
 lapply(libraries_to_load,require,character.only = T)
 
-#BASE_DIR = '~/mnt/data1/projects/WCDT_WGBS_2019/WCDT_WGBS'
 BASE_DIR = '~/Balk Lab Sequencing/Maryam/WGBS_5hmc_WCDT_mCRPC'
 make_path = function(BASE_DIR, s){
   paste(BASE_DIR, s, sep='/' )
@@ -83,6 +82,7 @@ dir_wcdt_UMRLMR <- make_path(BASE_DIR,"wgbs_data/WCDT_WGBS_MethySeekR/")
 dir_bidmc_UMRLMR <- make_path(BASE_DIR, "wgbs_data/UMRLMR_methylseq_bidmc/")
 dir_tpm <- make_path(BASE_DIR, "RNAseq/")
 dir_rhmrlevels <- make_path(BASE_DIR, "wgbs_data/rhmr.tsv") #rHMR (recurent HMRs)
+
 #######################################################################################################
 # Load data
 #######################################################################################################
@@ -94,7 +94,7 @@ cpg_islans <- read.delim(dir_cpg, header = F) # cpg islands
 colnames(cpg_islans) <- c("chr", "start", "end", "id")
 
 meta_data <- read_excel(dir_meta)
-# Normal 5hmc
+######################################### Normal 5hmc #########################################
 N5hmc_filenames = list.files(dir_normal_5hmc, pattern='.narrowPeak',full.names=F)
 Nr_5hmc.files <- dir("Benign_PC_GSE144530_5hmc_peaks_hg19/.", pattern="*.narrowPeak$")
 Nr_5hmc.peaks <- sapply(paste0(dir_normal_5hmc,N5hmc_filenames), function(.ele) toGRanges(.ele, format="narrowPeak"))
@@ -107,7 +107,7 @@ Nr_5hmc.peaks.hg38 = lapply(Nr_5hmc.peaks,
                               dplyr::mutate(length = end-start) %>% 
                               dplyr::mutate(neglog10q = -log10(qValue)) %>%
                               toGRanges())
-# mCRPC 5hmc
+######################################### mCRPC 5hmc #########################################
 wcdt_cfdna <- readRDS(dir_peaks_wcdt_cfdna)
 peaks_wcdt_cfdna <- lapply(wcdt_cfdna, ChIPQC:::GetGRanges, simple = TRUE)
 #head(peaks_wcdt_cfdna[[1]])
@@ -140,9 +140,7 @@ meta_data.flt <- meta_data %>%
   dplyr::left_join(peak_name, by = "sample_id")
 meta_data.flt[is.na(meta_data.flt)] <- "5-Benign-prostate"
 
-###########################################################################################################
-# Load WGBS data
-###########################################################################################################
+######################################### Load WGBS data #########################################
 # Methylation levels per sample in rHMRs
 rhmrlevel <- read.delim(dir_rhmrlevels, header=T, stringsAsFactors=F,sep='\t', strip.white=T,check.names=F)
 
