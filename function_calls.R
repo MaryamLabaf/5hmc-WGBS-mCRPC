@@ -34,7 +34,7 @@ hmr_peaks_fun <- function(chr, dir_methylseqR){
   return(hmrs)
 }
 
-hmr_fun <- function(hmrs) {
+hmr_fun <- function(hmrs,grange) {
   all_hmrs <- list()
   for(i in 1:length(hmrs)) {
     samplename <- names(hmrs)[i]
