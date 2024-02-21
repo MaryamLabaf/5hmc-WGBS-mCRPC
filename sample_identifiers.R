@@ -1,5 +1,4 @@
 # Sample identifiers
-setwd("~/Desktop/DNA_methylation/Felix_Feng_5hmC_CancerRes_2022/")
 ###########################################################################################################
 ###########################################################################################################
 # Samples
@@ -94,6 +93,3 @@ samples_cmp = c(
   "DTB-202-BL",# TET2
   "DTB-204-BL",
   "DTB-260-BL")
-
-WGBS_sup <- read_excel("WCDT_5hmC_additional_data/WGBS_additional_data/WGBS_supplementry.xlsx",
-                       sheet = 1, skip = 1)
